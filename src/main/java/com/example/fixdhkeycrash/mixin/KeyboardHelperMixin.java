@@ -1,17 +1,19 @@
 package com.example.fixdhkeycrash.mixin;
 
-import net.minecraft.client.KeyboardHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(KeyboardHandler.class)
+/**
+ * 修复 Minecraft KeyboardHandler.getKey 方法
+ * 1.21.11 混淆名：net.minecraft.class_3675 (KeyboardHandler)
+ */
+@Mixin(targets = "net.minecraft.class_3675")  // ← 使用混淆名字符串！
 public class KeyboardHandlerMixin {
     
     /**
-     * 修复 getKey 方法（1.21.11 混淆名：method_15987）
-     * DH 调用此方法时传入的 keyCode 可能越界
+     * 拦截 getKey 方法（混淆名：method_15987）
      */
     @Inject(
         method = "method_15987",  // getKey 的混淆名
