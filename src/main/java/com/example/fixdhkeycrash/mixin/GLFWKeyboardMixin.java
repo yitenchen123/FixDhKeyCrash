@@ -1,16 +1,19 @@
 package com.example.fixdhkeycrash.mixin;
 
-import net.minecraft.client.KeyboardHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(KeyboardHandler.class)  // ← 改为 KeyboardHandler！
+/**
+ * 修复 Minecraft KeyboardHandler.keyPress 方法
+ * 1.21.11 混淆名：net.minecraft.class_3675 (KeyboardHandler)
+ */
+@Mixin(targets = "net.minecraft.class_3675")  // ← 改为字符串引用！
 public class ExampleMixin {
     
     @Inject(
-        method = "keyPress",  // 处理按键事件
+        method = "keyPress",  // 或 method_22677 等，需要确认混淆名
         at = @At("HEAD"),
         cancellable = true
     )
