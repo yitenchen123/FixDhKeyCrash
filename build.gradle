@@ -1,6 +1,5 @@
 plugins {
-    // 为 1.21.11 等旧版本指定专用插件[reference:0][reference:1]
-    id 'net.fabricmc.fabric-loom-remap' version '1.14.15'
+    id 'fabric-loom' version '1.9.2'
     id 'java'
 }
 
@@ -9,7 +8,6 @@ group = project.maven_group
 
 repositories {
     mavenCentral()
-    // 保留 Fabric 的 Maven 仓库，确保 Loom 插件能下载所需依赖[reference:2]
     maven {
         name = "Fabric"
         url = "https://maven.fabricmc.net/"
@@ -17,7 +15,6 @@ repositories {
 }
 
 dependencies {
-    // 使用 gradle.properties 中定义的版本号，避免硬编码
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
