@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        // 必须添加 Fabric 的 Maven 仓库，这是 Loom 插件的来源
         maven {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
