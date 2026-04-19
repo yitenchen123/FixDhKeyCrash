@@ -1,19 +1,28 @@
+// 1. 修改插件ID
 plugins {
-    id 'fabric-loom' version '1.6.11'
+    id 'net.fabricmc.fabric-loom-remap' version '1.14.15'
     id 'java'
 }
 
-version = "1.0.0"
-group = "com.example.fixdhkeycrash"
+// 2. 从 gradle.properties 读取版本号
+version = project.mod_version
+group = project.maven_group
 
 repositories {
     mavenCentral()
+    maven {
+        name = "Fabric"
+        url = "https://maven.fabricmc.net/"
+    }
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:1.21.11"
-    mappings "net.fabricmc:yarn:1.21.11+build.1:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.19.2"
+    // 3. 从 gradle.properties 读取 Minecraft 版本
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    // 4. 从 gradle.properties 读取 Yarn 映射版本
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    // 5. 从 gradle.properties 读取 Fabric Loader 版本
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
 loom {
