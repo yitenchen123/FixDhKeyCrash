@@ -4,8 +4,6 @@
   "package": "com.example.fixdhkeycrash.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "GLFWKeyboardMixin",
-    "KeyboardHandlerMixin",
     "DistantHorizonsMixin"
   ],
   "injectors": {
